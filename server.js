@@ -12,24 +12,24 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('partials', 'views/partials')
 
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'property_management'
-});
-
-connection.connect((err) => {
-    if(err) {
-        throw err;
-    } else {
-        console.log('Connected');
-        connection.query('SELECT * FROM client_details', (err, result) => {
-            if(err) throw err;
-            console.log(result);
-        })
-    }
-})
+// let connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'property_management'
+// });
+//
+// connection.connect((err) => {
+//     if(err) {
+//         throw err;
+//     } else {
+//         console.log('Connected');
+//         connection.query('SELECT * FROM client_details', (err, result) => {
+//             if(err) throw err;
+//             console.log(result);
+//         })
+//     }
+// })
 
 
 //app runs on port 5000
