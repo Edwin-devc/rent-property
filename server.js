@@ -2,6 +2,7 @@
 const express = require('express');
 const mysql = require('mysql');
 const ejs = require('ejs');
+const bodyParser = require('body-parser')
 
 //initialize Express
 const app = express();
@@ -31,15 +32,62 @@ connection.connect((err) => {
     }
 })
 
+app.use(bodyParser.urlencoded({ extended: false}));
 
 //app runs on port 5000
 app.listen(5000);
 
+//TO DO
+const routes = {
+
+}
 
 //root route
-app.get('/', (request, response) => {
+app.get('/', (req, res) => {
     const name = 'Edwin'
-    response.render('pages/index', {
+    res.render('pages/index', {
         name:name
     });
+})
+
+app.post('/login', (req,res) => {
+    const email = req.body.email;
+    console.log(email);
+    res.redirect('/admin');
+})
+
+app.get('/landlord', (req, res) => {
+    res.render('pages/landlord-homepage');
+})
+
+app.get('/client', (req, res) => {
+    res.render('pages/client-homepage')
+})
+
+app.get('/admin', (req, res) => {
+    res.render('pages/admin-dashboard');
+})
+
+ app.get('/admin/dashboard', (req, res) => {
+    res.render('pages/admin-dashboard')
+ });
+
+ app.get('/admin/requests', (req, res) => {
+    res.render('pages/admin-requests');
+ });
+
+ app.get('/admin/clients', (req, res) => {
+    res.render('pages/admin-clients');
+ })
+
+app.get('/admin/tenants', (req, res) => {
+    res.render('pages/admin-tenants');
+})
+
+app.get('/admin/landlords', (req, res) => {
+    res.render('pages/admin-landlords');
+})
+
+app.get('/admin/property', (req, res) => {
+    res.render('pages/admin-property')
 })

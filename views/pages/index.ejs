@@ -13,26 +13,24 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
-            <div class="container-fluid">
-                <a class="navbar-brand text-center" href="#" class="">Rent Property Management</a>
-            </div>
+        <nav class="bg-success w-100 text-center">
+            <a class="text-decoration-none text-white py-5 fs-4" href="#" class="">Rent Property Management</a>
         </nav>
     </header>
     <main>
         <section class="w-50 m-auto">
             <div class="container py-4 w-75 m-auto">
                 <center>
-                    <button class="btn btn-primary w-25 btn-sm">Login</button>
+                    <button class="btn btn-primary w-25 btn-sm">Log in</button>
                     <button class="btn btn-success w-25 btn-sm">Register</button>
                 </center>
             </div>
 
             <div class="container py-2 w-75 m-auto">
-                <form action="" id="login-form">
+                <form action="/login" id="login-form" method="post">
                     <div class="my-2">
                         <label for="email" class="form-control-label">Email</label>
-                        <input type="email" class="form-control form-control-sm" required />
+                        <input type="email" class="form-control form-control-sm" name="email" required />
                     </div>
                     <div class="my-2">
                         <label for="password" class="form-control-label">Password</label>
@@ -41,7 +39,7 @@
 
                     <!-- role -->
                     <div class="my-2 center-text">
-                        <center><label for="role" class="fw-bold" style="font-size: 14px;">LOGIN AS</label></center>
+                        <center><label for="role" class="fw-bold" style="font-size: 14px;">LOG IN AS</label></center>
                         <select class="form-select form-select-sm" aria-label="select role">
                             <option selected>Client</option>
                             <option value="1">Tenant</option>
@@ -50,7 +48,7 @@
                         </select>
                     </div>
                     <div class="my-2">
-                        <input type="submit" class="btn btn-primary btn-sm w-25" value="Login" />
+                        <input type="submit" class="btn btn-primary btn-sm w-25" value="Log in" />
                     </div>
                 </form>
             </div>
