@@ -13,24 +13,24 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('partials', 'views/partials')
 
-let connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'property_management'
-});
-
-connection.connect((err) => {
-    if(err) {
-        throw err;
-    } else {
-        console.log('Connected');
-        connection.query('SELECT * FROM client_details', (err, result) => {
-            if(err) throw err;
-            console.log(result);
-        })
-    }
-})
+// let connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',
+//     database: 'property_management'
+// });
+//
+// connection.connect((err) => {
+//     if(err) {
+//         throw err;
+//     } else {
+//         console.log('Connected');
+//         connection.query('SELECT * FROM client_details', (err, result) => {
+//             if(err) throw err;
+//             console.log(result);
+//         })
+//     }
+// })
 
 app.use(bodyParser.urlencoded({ extended: false}));
 
@@ -49,6 +49,7 @@ app.get('/', (req, res) => {
         name:name
     });
 })
+
 
 app.post('/login', (req,res) => {
     const email = req.body.email;
@@ -91,3 +92,4 @@ app.get('/admin/landlords', (req, res) => {
 app.get('/admin/property', (req, res) => {
     res.render('pages/admin-property')
 })
+
