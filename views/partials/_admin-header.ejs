@@ -49,7 +49,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a class="nav-link px-3" href="#">Sign out</a>
+                <a class="nav-link px-3" href="#"><i class="bi bi-search"> </i>Search</a>
             </div>
         </div>
     </header>
@@ -59,33 +59,33 @@
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link toggle_page active" aria-current="page" href="/admin/dashboard">
+                        <li class="nav-item side-nav-item active">
+                            <a class="nav-link" aria-current="page" href="/admin/dashboard">
                                 Dashboard
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link toggle_page" id="request" href="/admin/requests">
+                        <li class="nav-item side-nav-item">
+                            <a class="nav-link" id="request" href="/admin/requests">
                                 Requests
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link toggle_page" href="/admin/clients">
+                        <li class="nav-item side-nav-item">
+                            <a class="nav-link" href="/admin/clients">
                                 Clients
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link toggle_page" href="/admin/tenants">
+                        <li class="nav-item side-nav-item">
+                            <a class="nav-link" href="/admin/tenants">
                                 Tenants
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link toggle_page" href="/admin/landlords">
+                        <li class="nav-item side-nav-item">
+                            <a class="nav-link" href="/admin/landlords">
                                 Landlords
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link toggle_page" href="/admin/property">
+                        <li class="nav-item side-nav-item">
+                            <a class="nav-link" href="/admin/property">
                                 Property
                             </a>
                         </li>
@@ -99,16 +99,22 @@
                         </a>
                     </h6>
                     <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
+                        <li class="nav-item side-nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Current month
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item side-nav-item">
                             <a class="nav-link" href="#">
                                 <span data-feather="file-text"></span>
                                 Last quarter
+                            </a>
+                        </li>
+                        <li class="nav-item side-nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="bi bi-box-arrow-right"> </i>
+                                Log out
                             </a>
                         </li>
                     </ul>

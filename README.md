@@ -1,5 +1,6 @@
-# rent-property
+## rent-property
 Rent Property Management software
 
-## Configuration
+### Configuration
+Your system must have nodejs installed and mysql server for the database
 
