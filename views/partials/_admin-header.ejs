@@ -121,3 +121,35 @@
                 </div>
             </nav>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" id="dashboard-container">
+
+
+                <!-- modal for adding an admin -->
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Admin Registration</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="col-form-label">Email Address:</label>
+                                        <input type="text" class="form-control" id="email-address">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="col-form-label">Password:</label>
+                                        <input type="text" class="form-control" id="admin-password">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="reset" class="btn btn-sm btn-secondary" value="Cancel" />
+                                        <input type="submit" class="btn btn-sm btn-success" value="Add" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
