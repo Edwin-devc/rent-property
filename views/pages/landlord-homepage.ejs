@@ -23,16 +23,36 @@
 </head>
 
 <body>
-    <header>
-        <nav class="bg-success w-100 text-center">
-            <a class="text-decoration-none text-white py-5 fs-4" href="#">Rent Property Management</a>
-        </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Rent Property Management</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Requests</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
     <main>
         <div class="w-75 m-auto">
             <div class="my-2 m-auto w-25">
-                <button type="button" class="btn btn-success btn-sm fw-bold w-100"  data-bs-toggle="modal"
-                data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-plus"> </i>Add property</button>
+                <button type="button" class="btn btn-success btn-sm fw-bold w-100" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-plus"> </i>Add
+                    property</button>
             </div>
         </div>
         <section class="card w-75 m-auto bg-light mt-4">
@@ -72,45 +92,47 @@
         <!-- modal for add property -->
 
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Property Registration</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form action="/landlord" method="post">
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Property Name:</label>
-                                <input type="text" class="form-control form-control-sm" id="email-address">
+                                <label for="property_name" class="col-form-label">Property Name:</label>
+                                <input type="text" class="form-control form-control-sm" id="property_name" name="property-name">
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="col-form-label">Description:</label>
-                                <textarea name="description" id="property-description" class="form-control form-control-sm" cols="30" rows="2"></textarea>
+                                <textarea name="description" id="property-description" name="property_description"
+                                    class="form-control form-control-sm" cols="30" rows="2"></textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Type:</label>
-                                <input type="text" class="form-control form-control-sm" id="email-address">
+                                <label for="property_type" class="col-form-label">Type:</label>
+                                <input type="text" class="form-control form-control-sm" id="property-type" name="property_type">
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Location:</label>
-                                <input type="text" class="form-control form-control-sm" id="email-address">
+                                <label for="location-name" class="col-form-label">Location:</label>
+                                <input type="text" class="form-control form-control-sm" id="location-name" name="location-name">
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Photos:</label>
-                                <input type="file" class="form-control form-control-sm" id="email-address" value="Choose Photos">
+                                <label for="photos" class="col-form-label">Photos:</label>
+                                <input type="file" class="form-control form-control-sm" id="email-address"
+                                    value="Choose Photos" name="photos">
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Number of Bedrooms:</label>
-                                <input type="number" class="form-control form-control-sm" id="email-address">
+                                <label for="bedrooms" class="col-form-label">Number of Bedrooms:</label>
+                                <input type="number" class="form-control form-control-sm" id="bedrooms" name="bedrooms">
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Cost:</label>
-                                <input type="number" class="form-control form-control-sm" id="email-address">
+                                <label for="cost" class="col-form-label">Cost:</label>
+                                <input type="number" class="form-control form-control-sm" id="cost" name="cost">
                             </div>
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Number of Bathrooms:</label>
-                                <input type="number" class="form-control form-control-sm" id="email-address">
+                                <label for="bathrooms" class="col-form-label">Number of Bathrooms:</label>
+                                <input type="number" class="form-control form-control-sm" id="bathrooms" name="bathrooms">
                             </div>
                             <div class="mb-3">
                                 <input type="reset" class="btn btn-sm btn-secondary" value="Cancel" />

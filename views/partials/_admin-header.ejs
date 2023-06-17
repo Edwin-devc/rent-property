@@ -135,14 +135,14 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form method="post" action="/admin">
                                     <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Email Address:</label>
-                                        <input type="text" class="form-control" id="email-address">
+                                        <label for="email" class="col-form-label">Email Address:</label>
+                                        <input type="text" class="form-control" id="email-address" name="email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="message-text" class="col-form-label">Password:</label>
-                                        <input type="text" class="form-control" id="admin-password">
+                                        <label for="password" class="col-form-label">Password:</label>
+                                        <input type="password" class="form-control" id="admin-password" name="password">
                                     </div>
                                     <div class="mb-3">
                                         <input type="reset" class="btn btn-sm btn-secondary" value="Cancel" />

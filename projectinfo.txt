@@ -1,0 +1,18 @@
+1.Any user should register your property site
+2.Once a user has registered, he should be able to log in and create/add a property – for landlords – or view properties for potential Tenants
+3.From the landlords’ home page, there should be functionality of adding a new Property, deleting a property, and editing a property.
+4.The Property should capture the details (Property Name, Type, Location, Description, Number of Bedrooms, No of Bathrooms, Maps, Cost, Photos)
+5.Once the landlord, creates a property, s/he must preview the Property and accept it
+6.Properties must be approved by the administrator.
+7.Properties do not appear main page until the administrator approvals the posts
+8.Properties must be sorted by date posted, type and/or prices, and should show the owner and contact details
+9.When a landlord in, he should be able to see only his properties, which he can decide to delete or edit. Again, the edits and deletes must be approved by the admin.
+10.When a user logs in, she should be able to see all properties available for rent. The user should be able to “like” or “dislike” the property, and leave comments on the property, that the landlord can review
+11.The landlord should be able to see which properties has the most likes or dislikes.
+12.The user, if s/he likes the property, s/he should be able to request to lease the property.
+13.The Landlord should be able to accept the request lease. The property should still show in the list of available properties, until the tenant has made payment. 
+14.Once the landlord has accepted the user’s request for lease, and the user has paid, the user is now a tenant (registration is now needed from the user)
+15.Tenants, when they log in, they should only see the properties they have leased out
+16.Tenants can add a rating and can leave comments on the properties they have leased. A tenant should be able to add/edit or delete his comments. A tenant should be able to add more than one comment.
+17.Once a lease expires, the rented property should return to the pool of un-leased properties and new users (potential tenants) should be able to see the rating and comments that were added by the former tenants. 
+18.System should show which reports on which units are available/leased, tenant, and tenants’ statements, with outstanding balance (if any)

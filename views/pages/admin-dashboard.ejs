@@ -31,41 +31,15 @@
                 </tr>
             </thead>
             <tbody>
+                <% for(let i=0; i<data.clients.length; i++) { %>
                 <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
+                    <td><%= data.clients[i].client_ID %></td>
+                    <td><%= data.clients[i].firstname %></td>
+                    <td><%= data.clients[i].lastname %></td>
+                    <td><%= data.clients[i].client_email %></td>
+                    <td><%= data.clients[i].contact %></td>
                 </tr>
-                <tr>
-                    <td>1,002</td>
-                    <td>placeholder</td>
-                    <td>irrelevant</td>
-                    <td>visual</td>
-                    <td>layout</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>data</td>
-                    <td>rich</td>
-                    <td>dashboard</td>
-                    <td>tabular</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>information</td>
-                    <td>placeholder</td>
-                    <td>illustrative</td>
-                    <td>data</td>
-                </tr>
-                <tr>
-                    <td>1,004</td>
-                    <td>text</td>
-                    <td>random</td>
-                    <td>layout</td>
-                    <td>dashboard</td>
-                </tr>
+                <% } %>
             </tbody>
         </table>
     </div>
@@ -84,46 +58,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,002</td>
-                    <td>placeholder</td>
-                    <td>irrelevant</td>
-                    <td>visual</td>
-                    <td>layout</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>data</td>
-                    <td>rich</td>
-                    <td>dashboard</td>
-                    <td>tabular</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>information</td>
-                    <td>placeholder</td>
-                    <td>illustrative</td>
-                    <td>data</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,004</td>
-                    <td>text</td>
-                    <td>random</td>
-                    <td>layout</td>
-                    <td>dashboard</td>
-                    <td>1,001</td>
-                </tr>
+                <% for(let i=0; i<data.landlords.length; i++) { %>
+                    <tr>
+                        <td><%= data.landlords[i].landlord_ID %></td>
+                        <td><%= data.landlords[i].firstname %></td>
+                        <td><%= data.landlords[i].lastname %></td>
+                        <td><%= data.landlords[i].landlord_email %></td>
+                        <td><%= data.landlords[i].contact %></td>
+                        <td><%= data.landlords[i].property_id %></td>
+                    </tr>
+                    <% } %>
+               
             </tbody>
         </table>
     </div>
