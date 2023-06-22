@@ -6,5 +6,12 @@ const generateID = (firstCharacter) => {
     }
     return gid;
 }
+const checkValue = 2;
+const checkValue2 = '2';
 
-console.log(generateID('P'));
+const array = [0,1,2,3];
+
+console.log(array.length);
+
+
+

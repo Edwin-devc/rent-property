@@ -25,7 +25,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Rent Property Management</a>
+            <a class="navbar-brand" href="#"><small>Rent Property Management</small></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
                 aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -55,95 +55,105 @@
                     property</button>
             </div>
         </div>
-        <section class="card w-75 m-auto bg-light mt-4">
-            <div class="d-flex flex-row">
-                <!-- property image -->
-                <div class="w-50 h-50">
-                    <img class="img-fluid" src="/images/house-1867187_640.jpg" alt="house" />
-                    <p class="pt-3 ps-2 text-wrap fs-7">
-                        A spacious en-suite located on the top floor of the renovated 40-year old
-                        shophouse. The room is a Thai-contemporary inspired, overlooking one of the most
-                        sacred "Trimit Temple" and a balcony with little garden.
-                    </p>
+        <% for (let i=0; i < properties.length; i++) { %>
+            <section class="card w-75 m-auto bg-light mt-4">
+                <div class="d-flex flex-row justify-content-between">
+                    <!-- property image -->
+                    <div class="w-50 h-50">
+                        <img class="img-fluid" src="/images/house-1867187_640.jpg" alt="house" />
+                        <p class="pt-3 ps-2 text-wrap fs-7">
+                            <%= properties[i].description %>
+                        </p>
+                    </div>
+                    <!-- property information -->
+                    <div class="mx-auto mt-2">
+                        <div class="button-group">
+                            <a href="/view-property/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-primary"><i class="bi bi-eye"></i>View</a>
+                            <a href="/edit-property/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-secondary"><i class="bi bi-pencil-square"> </i>Edit</a>
+                            <a href="/property/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-danger"><i class="bi bi-trash">
+                                </i>Delete</a>
+                        </div>
+                        <!-- details -->
+                        <div class="pt-3">
+                            <h4>
+                                <%= properties[i].name %>
+                            </h4>
+                            <ul class="list-group">
+                                <li class="list-group-item">Type: <%= properties[i].type %></li>
+                                <li class="list-group-item">Location: <%= properties[i].location %>
+                                </li>
+                                <li class="list-group-item">Bedrooms: <%= properties[i].bedrooms %>
+                                </li>
+                                <li class="list-group-item">Bathrooms: <%= properties[i].bathrooms %>
+                                </li>
+                                <li class="list-group-item">Cost: UGX.<%= properties[i].cost %>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <!-- property information -->
-                <div class="mx-auto mt-2">
-                    <div class="button-group">
-                        <button class="btn btn-primary btn-sm fw-bold"><i class="bi bi-pencil-square"> </i>Edit</button>
-                        <button class="btn btn-danger btn-sm fw-bold"><i class="bi bi-trash"> </i>Delete</button>
-                    </div>
-                    <!-- details -->
-                    <div class="pt-3">
-                        <h4>Muyenga Apartment</h4>
-                        <ul class="list-group">
-                            <li class="list-group-item">Type: Apartment</li>
-                            <li class="list-group-item">Location: Naalya, Namugongo</li>
-                            <li class="list-group-item">Bedrooms: 4</li>
-                            <li class="list-group-item">Bathrooms: 2</li>
-                            <li class="list-group-item">Cost: UGX.1,060,000</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+            <% } %>
 
 
+                <!-- modal for add property -->
 
-        <!-- modal for add property -->
-
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Property Registration</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="/landlord" method="post">
-                            <div class="mb-3">
-                                <label for="property_name" class="col-form-label">Property Name:</label>
-                                <input type="text" class="form-control form-control-sm" id="property_name" name="property-name">
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Property Registration</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                            <div class="mb-3">
-                                <label for="description" class="col-form-label">Description:</label>
-                                <textarea name="description" id="property-description" name="property_description"
-                                    class="form-control form-control-sm" cols="30" rows="2"></textarea>
-                            </div>
-                            <div class="mb-3">
-                                <label for="property_type" class="col-form-label">Type:</label>
-                                <input type="text" class="form-control form-control-sm" id="property-type" name="property_type">
-                            </div>
-                            <div class="mb-3">
-                                <label for="location-name" class="col-form-label">Location:</label>
-                                <input type="text" class="form-control form-control-sm" id="location-name" name="location-name">
-                            </div>
-                            <div class="mb-3">
+                            <div class="modal-body">
+                                <form action="/landlord" method="post">
+                                    <div class="mb-3">
+                                        <label for="property_name" class="col-form-label">Property Name:</label>
+                                        <input type="text" class="form-control form-control-sm" id="property_name"
+                                            name="property_name">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="property_type" class="col-form-label">Type:</label>
+                                        <input type="text" class="form-control form-control-sm" id="property_type"
+                                            name="property_type">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="location-name" class="col-form-label">Location:</label>
+                                        <input type="text" class="form-control form-control-sm" id="location-name"
+                                            name="location_name">
+                                    </div>
+                                    <!-- <div class="mb-3">
                                 <label for="photos" class="col-form-label">Photos:</label>
                                 <input type="file" class="form-control form-control-sm" id="email-address"
                                     value="Choose Photos" name="photos">
+                            </div> -->
+                                    <div class="mb-3">
+                                        <label for="bedrooms" class="col-form-label">Number of Bedrooms:</label>
+                                        <input type="number" class="form-control form-control-sm" id="bedrooms"
+                                            name="bedrooms">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cost" class="col-form-label">Cost:</label>
+                                        <input type="number" class="form-control form-control-sm" id="cost" name="cost">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="bathrooms" class="col-form-label">Number of Bathrooms:</label>
+                                        <input type="number" class="form-control form-control-sm" id="bathrooms"
+                                            name="bathrooms">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="reset" class="btn btn-sm btn-secondary" value="Cancel" />
+                                        <input type="submit" class="btn btn-sm btn-success" value="Add Property" />
+                                    </div>
+                                </form>
                             </div>
-                            <div class="mb-3">
-                                <label for="bedrooms" class="col-form-label">Number of Bedrooms:</label>
-                                <input type="number" class="form-control form-control-sm" id="bedrooms" name="bedrooms">
-                            </div>
-                            <div class="mb-3">
-                                <label for="cost" class="col-form-label">Cost:</label>
-                                <input type="number" class="form-control form-control-sm" id="cost" name="cost">
-                            </div>
-                            <div class="mb-3">
-                                <label for="bathrooms" class="col-form-label">Number of Bathrooms:</label>
-                                <input type="number" class="form-control form-control-sm" id="bathrooms" name="bathrooms">
-                            </div>
-                            <div class="mb-3">
-                                <input type="reset" class="btn btn-sm btn-secondary" value="Cancel" />
-                                <input type="submit" class="btn btn-sm btn-success" value="Add Property" />
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- end of modal -->
+                <!-- end of modal -->
 
     </main>
     <!-- bootstrap js vendor -->

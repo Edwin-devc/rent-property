@@ -6,6 +6,8 @@ const clientController = require('../controllers/client.controllers');
 const landlordController = require('../controllers/landlord.controllers');
 
 router.get('/', mainController.mainView);
+router.post('/', mainController.authenticateUser);
+router.post('/register', mainController.registerUser);
 /* admin routers */
 router.get('/admin', adminController.viewDashboard);
 router.get('/admin/dashboard', adminController.viewDashboard);
@@ -17,10 +19,17 @@ router.get('/admin/property', adminController.viewProperty);
 router.post('/admin', adminController.addAdmin);
 /* client requests */
 router.get('/client', clientController.view);
+router.get('/addcomment/:id',clientController.comment);
+router.post('/addcomment/:id',clientController.addComment);
+router.get('/likeproperty/:id',clientController.like);
+router.get('/dislikeproperty/:id',clientController.dislike);
 /* tenant requests */
 router.get('');
 /* landlord */
 router.get('/landlord', landlordController.view);
 router.post('/landlord', landlordController.addProperty);
+router.get('/view-property/:id', landlordController.viewProperty);
+router.get('/edit-property/:id', landlordController.editProperty);
+router.post('/edit-property/:id', landlordController.updateProperty);
 
 module.exports = router;

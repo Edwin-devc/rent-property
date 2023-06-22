@@ -26,17 +26,15 @@
                     <th scope="col">ID</th>
                     <th scope="col">Firstname</th>
                     <th scope="col">Lastname</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Contact</th>
                 </tr>
             </thead>
             <tbody>
                 <% for(let i=0; i<data.clients.length; i++) { %>
                 <tr>
-                    <td><%= data.clients[i].client_ID %></td>
+                    <td><%= data.clients[i].cid %></td>
                     <td><%= data.clients[i].firstname %></td>
                     <td><%= data.clients[i].lastname %></td>
-                    <td><%= data.clients[i].client_email %></td>
                     <td><%= data.clients[i].contact %></td>
                 </tr>
                 <% } %>
@@ -52,22 +50,18 @@
                     <th scope="col">ID</th>
                     <th scope="col">Firstname</th>
                     <th scope="col">Lastname</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Contact</th>
-                    <th scope="col">Property Leased</th>
                 </tr>
             </thead>
             <tbody>
                 <% for(let i=0; i<data.landlords.length; i++) { %>
                     <tr>
-                        <td><%= data.landlords[i].landlord_ID %></td>
+                        <td><%= data.landlords[i].lid %></td>
                         <td><%= data.landlords[i].firstname %></td>
                         <td><%= data.landlords[i].lastname %></td>
-                        <td><%= data.landlords[i].landlord_email %></td>
                         <td><%= data.landlords[i].contact %></td>
-                        <td><%= data.landlords[i].property_id %></td>
                     </tr>
-                    <% } %>
+                <% } %>
                
             </tbody>
         </table>
@@ -82,52 +76,18 @@
                     <th scope="col">ID</th>
                     <th scope="col">Firstname</th>
                     <th scope="col">Lastname</th>
-                    <th scope="col">Email</th>
                     <th scope="col">Contact</th>
-                    <th scope="col">Property Owned</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,002</td>
-                    <td>placeholder</td>
-                    <td>irrelevant</td>
-                    <td>visual</td>
-                    <td>layout</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>data</td>
-                    <td>rich</td>
-                    <td>dashboard</td>
-                    <td>tabular</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>information</td>
-                    <td>placeholder</td>
-                    <td>illustrative</td>
-                    <td>data</td>
-                    <td>1,001</td>
-                </tr>
-                <tr>
-                    <td>1,004</td>
-                    <td>text</td>
-                    <td>random</td>
-                    <td>layout</td>
-                    <td>dashboard</td>
-                    <td>1,001</td>
-                </tr>
+                <% for(let i=0; i<data.landlords.length; i++) { %>
+                    <tr>
+                        <td><%= data.landlords[i].lid %></td>
+                        <td><%= data.landlords[i].firstname %></td>
+                        <td><%= data.landlords[i].lastname %></td>
+                        <td><%= data.landlords[i].contact %></td>
+                    </tr>
+                <% } %>
             </tbody>
         </table>
     </div>
@@ -154,42 +114,6 @@
                     <td>data</td>
                     <td>placeholder</td>
                     <td>text</td>
-                    <td>1,001</td>
-                    <td>120,000</td>
-                </tr>
-                <tr>
-                    <td>1,002</td>
-                    <td>placeholder</td>
-                    <td>irrelevant</td>
-                    <td>visual</td>
-                    <td>layout</td>
-                    <td>1,001</td>
-                    <td>120,000</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>data</td>
-                    <td>rich</td>
-                    <td>dashboard</td>
-                    <td>tabular</td>
-                    <td>1,001</td>
-                    <td>120,000</td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>information</td>
-                    <td>placeholder</td>
-                    <td>illustrative</td>
-                    <td>data</td>
-                    <td>1,001</td>
-                    <td>120,000</td>
-                </tr>
-                <tr>
-                    <td>1,004</td>
-                    <td>text</td>
-                    <td>random</td>
-                    <td>layout</td>
-                    <td>dashboard</td>
                     <td>1,001</td>
                     <td>120,000</td>
                 </tr>

@@ -1,38 +1,120 @@
-const pool = require('../../connection'); 
+const pool = require('../../connection');
 
 exports.view = (req, res) => {
-    res.render('pages/landlord-homepage');
+    if (req.session.email && req.session.uid) {
+        pool.getConnection((err, connection) => {
+            if (err) {
+                throw err;
+            } else {
+                connection.query('SELECT * FROM property', (err, properties) => {
+                    connection.release();
+                    if (!err) {
+                        res.render('pages/landlord-homepage', { properties });
+                    } else {
+                        throw err;
+                    }
+                })
+            }
+        })
+        
+    } else {
+        res.redirect('/');
+    }
 }
-exports.addProperty =  (req, res) => {
+exports.addProperty = (req, res) => {
     const generateID = (firstCharacter) => {
         let gid = firstCharacter;
-        const sampleSpace = [0,1,2,3,4,5,6,7,8,9];
+        const sampleSpace = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
         for (let i = 0; i < 5; i++) {
-            gid += sampleSpace[Math.floor(Math.random()*sampleSpace.length)];
+            gid += sampleSpace[Math.floor(Math.random() * sampleSpace.length)];
         }
         return gid;
     }
-    prop_id = generateID('P');
-    const {property_name, property_description, property_type} = req.body;
+    const prop_id = generateID('P');
+    const { property_name, property_description, property_type, location_name, bedrooms, cost, bathrooms } = req.body;
     pool.getConnection((err, connection) => {
-        if(err) {
+        if (err) {
             throw err;
         } else {
-            connection.query('INSERT INTO property_details SET property_ID = ?, property_name = ?, description = ?, type = ? ',[prop_id, property_name, property_description, property_type], (err) => {
-                
-                if (!err) {
+            connection.query('SELECT * FROM landlord WHERE uid = ?', [req.session.uid], (err, row) => {
+                if (err) {
                     throw err;
                 } else {
-                    connection.query("SELECT * FROM property_details", (err, rows) => {
+                    const newLid = row[0].lid;
+                    connection.query('INSERT INTO property SET pid = ?, name = ?, type = ?, location = ?, description = ?, bedrooms = ?, bathrooms = ?, cost = ?, lid = ?', [prop_id, property_name, property_type, location_name, property_description, bedrooms, bathrooms, cost, newLid], (err) => {
                         connection.release();
                         if (!err) {
-                            res.render('pages/landlord-homepage', { rows });
+                            res.redirect('/landlord');
                         } else {
                             throw err;
                         }
                     })
                 }
             })
+            
         }
     })
+}
+
+exports.viewProperty = (req, res) => {
+    const searchId = req.params.id;
+    pool.getConnection((err, connection) => {
+        if(!err) {
+            connection.query('SELECT * FROM property WHERE pid = ?', [searchId], (err, properties) => {
+                if(!err) {
+                    connection.query('SELECT comment FROM comment WHERE pid = ?', [searchId], (err, comments) => {
+                        connection.release();
+                        if(!err) {
+                            res.render('pages/view-property', { properties, comments });
+                        } else {
+                            console.log(err);
+                        }
+                    })
+                    
+                } else {
+                    throw err;
+                }
+            })
+        } else {
+            throw err;
+        }
+    }) 
+}
+
+exports.editProperty = (req, res) => {
+    const searchId = req.params.id;
+    pool.getConnection((err, connection) => {
+        if(!err) {
+            connection.query('SELECT * FROM property WHERE pid = ?', [searchId], (err, properties) => {
+                connection.release();
+                if(!err) {
+                    res.render('pages/edit-property', { properties });
+                } else {
+                    throw err;
+                }
+            })
+        } else {
+            throw err;
+        }
+    }) 
+}
+
+exports.updateProperty = (req, res) => {
+    const searchId = req.params.id;
+    const { property_name, property_description, property_type, location_name, bedrooms, cost, bathrooms } = req.body;
+    pool.getConnection((err, connection) => {
+        if(!err) {
+
+            connection.query('UPDATE property SET name = ?, type = ?, location = ?, description = ?, bedrooms = ?, bathrooms = ?, cost = ? WHERE pid = ?', [property_name, property_type, location_name, property_description, bedrooms, bathrooms, cost, searchId], (err) => {
+                connection.release();
+                if(!err) {
+                    res.redirect('/landlord');
+                } else {
+                    throw err;
+                }
+            })
+        } else {
+            throw err;
+        }
+    }) 
 }
