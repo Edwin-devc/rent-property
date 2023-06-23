@@ -17,6 +17,9 @@ router.get('/admin/tenants', adminController.viewTenants)
 router.get('/admin/landlords', adminController.viewLandlords);
 router.get('/admin/property', adminController.viewProperty);
 router.post('/admin', adminController.addAdmin);
+router.get('/admin-approve-property/:id', adminController.approveProperty);
+router.get('/admin-reject-property/:id', adminController.rejectProperty);
+router.get('/admin-view-property/:id', adminController.reviewProperty);
 /* client requests */
 router.get('/client', clientController.view);
 router.get('/addcomment/:id',clientController.comment);
@@ -31,5 +34,6 @@ router.post('/landlord', landlordController.addProperty);
 router.get('/view-property/:id', landlordController.viewProperty);
 router.get('/edit-property/:id', landlordController.editProperty);
 router.post('/edit-property/:id', landlordController.updateProperty);
+router.get('/delete-property/:id', landlordController.deleteProperty);
 
 module.exports = router;

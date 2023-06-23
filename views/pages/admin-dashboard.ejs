@@ -108,15 +108,17 @@
                 </tr>
             </thead>
             <tbody>
+                <% for(let i = 0; i < data.properties.length; i++) { %>
                 <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
-                    <td>1,001</td>
-                    <td>120,000</td>
+                    <td><%= data.properties[i].pid %></td>
+                    <td><%= data.properties[i].name %></td>
+                    <td><%= data.properties[i].location %></td>
+                    <td><%= data.properties[i].type %></td>
+                    <td><%= data.properties[i].bathrooms %></td>
+                    <td><%= data.properties[i].bedrooms %></td>
+                    <td><%= data.properties[i].cost %></td>
                 </tr>
+                <% } %>
             </tbody>
         </table>
     </div>

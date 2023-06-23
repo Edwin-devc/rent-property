@@ -118,3 +118,20 @@ exports.updateProperty = (req, res) => {
         }
     }) 
 }
+exports.deleteProperty = (req, res) => {
+    const searchId = req.params.id;
+    pool.getConnection((err, connection) => {
+        if(!err) {
+            connection.query('DELETE FROM property WHERE pid = ?', [searchId], (err) => {
+                connection.release();
+                if(!err) {
+                    res.redirect('/landlord');
+                } else {
+                    throw err;
+                }
+            })
+        } else {
+            throw err;
+        }
+    }) 
+}

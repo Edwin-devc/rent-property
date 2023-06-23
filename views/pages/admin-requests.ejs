@@ -24,69 +24,34 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Contact</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Bathrooms</th>
+                    <th scope="col">Bedrooms</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col" class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
-                    <td>
-                        <button class="btn btn-sm btn-success">Approve</button>
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1,002</td>
-                    <td>placeholder</td>
-                    <td>irrelevant</td>
-                    <td>visual</td>
-                    <td>layout</td>
-                    <td>
-                        <button class="btn btn-sm btn-success">Approve</button>
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>data</td>
-                    <td>rich</td>
-                    <td>dashboard</td>
-                    <td>tabular</td>
-                    <td>
-                        <button class="btn btn-sm btn-success">Approve</button>
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1,003</td>
-                    <td>information</td>
-                    <td>placeholder</td>
-                    <td>illustrative</td>
-                    <td>data</td>
-                    <td>
-                        <button class="btn btn-sm btn-success">Approve</button>
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>1,004</td>
-                    <td>text</td>
-                    <td>random</td>
-                    <td>layout</td>
-                    <td>dashboard</td>
-                    <td>
-                        <button class="btn btn-sm btn-success">Approve</button>
-                        <button class="btn btn-sm btn-danger">Reject</button>
-                    </td>
-                </tr>
+                <% for(let i = 0; i < requests.length; i++) { %>
+                    <tr>
+                        <td><%= requests[i].pid %></td>
+                        <td><%= requests[i].name %></td>
+                        <td><%= requests[i].location %></td>
+                        <td><%= requests[i].type %></td>
+                        <td><%= requests[i].bathrooms %></td>
+                        <td><%= requests[i].bedrooms %></td>
+                        <td><%= requests[i].cost %></td>
+                        <td>
+                            <a href="/admin-view-property/<%= requests[i].pid %>" class="btn btn-sm btn-light"><i class="bi bi-eye"></i><small>View</small></a>
+                            <a href="/admin-approve-property/<%= requests[i].pid %>" class="btn btn-sm btn-success"><i class="bi bi-check-lg"> </i><small>Approve</small></a>
+                            <a href="/admin-reject-property/<%= requests[i].pid %>" class="btn btn-sm btn-danger"><i class="bi bi-x-circle">
+                                </i><small>Reject</small></a>
+                        </td>
+                    </tr>
+                <% } %>
+                
             </tbody>
         </table>
     </div>

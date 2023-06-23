@@ -55,8 +55,9 @@
                     property</button>
             </div>
         </div>
+
         <% for (let i=0; i < properties.length; i++) { %>
-            <section class="card w-75 m-auto bg-light mt-4">
+            <section class="card w-75 m-auto bg-light my-4">
                 <div class="d-flex flex-row justify-content-between">
                     <!-- property image -->
                     <div class="w-50 h-50">
@@ -68,9 +69,14 @@
                     <!-- property information -->
                     <div class="mx-auto mt-2">
                         <div class="button-group">
-                            <a href="/view-property/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-primary"><i class="bi bi-eye"></i>View</a>
-                            <a href="/edit-property/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-secondary"><i class="bi bi-pencil-square"> </i>Edit</a>
-                            <a href="/property/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-danger"><i class="bi bi-trash">
+                            <a href="/view-property/<%= properties[i].pid %>"
+                                class="btn btn-sm btn-light btn-outline-primary"><i class="bi bi-eye"></i>View</a>
+                            <a href="/edit-property/<%= properties[i].pid %>"
+                                class="btn btn-sm btn-light btn-outline-secondary"><i class="bi bi-pencil-square">
+                                </i>Edit</a>
+                            <a href=""
+                                class="btn btn-sm btn-light btn-outline-danger" data-bs-toggle="modal"
+                                data-bs-target="<%= '#exampleModal-delete'+ i %>"><i class="bi bi-trash">
                                 </i>Delete</a>
                         </div>
                         <!-- details -->
@@ -79,7 +85,8 @@
                                 <%= properties[i].name %>
                             </h4>
                             <ul class="list-group">
-                                <li class="list-group-item">Type: <%= properties[i].type %></li>
+                                <li class="list-group-item">Type: <%= properties[i].type %>
+                                </li>
                                 <li class="list-group-item">Location: <%= properties[i].location %>
                                 </li>
                                 <li class="list-group-item">Bedrooms: <%= properties[i].bedrooms %>
@@ -89,12 +96,37 @@
                                 <li class="list-group-item">Cost: UGX.<%= properties[i].cost %>
                                 </li>
                             </ul>
+                            <p><small>Status: <span class="text-warning">
+                                        <%= properties[i].status %>
+                                    </span></small></p>
                         </div>
                     </div>
                 </div>
+               
+                    <!-- Modal -->
+                    <div class="modal fade" id="<%= 'exampleModal-delete'+ i %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Delete Property</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><small>Are you sure you want delete property permanently</small></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary btn-sm"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    <a href="/delete-property/<%= properties[i].pid %>"
+                                        class="btn btn-sm btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </section>
             <% } %>
-
 
                 <!-- modal for add property -->
 
@@ -114,7 +146,11 @@
                                         <input type="text" class="form-control form-control-sm" id="property_name"
                                             name="property_name">
                                     </div>
-                                    
+                                    <div class="mb-3">
+                                        <label for="description" class="col-form-label">Description:</label>
+                                        <textarea id="property-description" name="property_description"
+                                            class="form-control form-control-sm" cols="30" rows="2"></textarea>
+                                    </div>
                                     <div class="mb-3">
                                         <label for="property_type" class="col-form-label">Type:</label>
                                         <input type="text" class="form-control form-control-sm" id="property_type"
@@ -140,7 +176,8 @@
                                         <input type="number" class="form-control form-control-sm" id="cost" name="cost">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="bathrooms" class="col-form-label">Number of Bathrooms:</label>
+                                        <label for="bathrooms" class="col-form-label">Number of
+                                            Bathrooms:</label>
                                         <input type="number" class="form-control form-control-sm" id="bathrooms"
                                             name="bathrooms">
                                     </div>
@@ -154,6 +191,7 @@
                     </div>
                 </div>
                 <!-- end of modal -->
+
 
     </main>
     <!-- bootstrap js vendor -->

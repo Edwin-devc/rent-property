@@ -5,7 +5,7 @@ exports.view =(req, res) => {
             if (err) {
                 throw err;
             } else {
-                connection.query('SELECT * FROM property', (err, properties) => {
+                connection.query('SELECT * FROM property WHERE status = ?', ['approved'], (err, properties) => {
                     connection.release();
                     if (!err) {
                         res.render('pages/client-homepage', { properties });
