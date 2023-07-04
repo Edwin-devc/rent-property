@@ -1,12 +1,12 @@
 const pool = require('../../connection');
 
 exports.view = (req, res) => {
-    if (req.session.email && req.session.uid) {
+    if (req.session.user.email && req.session.user.uid) {
         pool.getConnection((err, connection) => {
             if (err) {
                 throw err;
             } else {
-                connection.query('SELECT * FROM property', (err, properties) => {
+                connection.query('SELECT * FROM property WHERE lid IN (SELECT lid FROM landlord WHERE uid = ?)', [req.session.user.uid], (err, properties) => {
                     connection.release();
                     if (!err) {
                         res.render('pages/landlord-homepage', { properties });
@@ -21,6 +21,7 @@ exports.view = (req, res) => {
         res.redirect('/');
     }
 }
+
 exports.addProperty = (req, res) => {
     const generateID = (firstCharacter) => {
         let gid = firstCharacter;
@@ -30,18 +31,19 @@ exports.addProperty = (req, res) => {
         }
         return gid;
     }
+
     const prop_id = generateID('P');
     const { property_name, property_description, property_type, location_name, bedrooms, cost, bathrooms } = req.body;
     pool.getConnection((err, connection) => {
         if (err) {
             throw err;
         } else {
-            connection.query('SELECT * FROM landlord WHERE uid = ?', [req.session.uid], (err, row) => {
+            connection.query('SELECT * FROM landlord WHERE uid = ?', [req.session.user.uid], (err, row) => {
                 if (err) {
                     throw err;
                 } else {
                     const newLid = row[0].lid;
-                    connection.query('INSERT INTO property SET pid = ?, name = ?, type = ?, location = ?, description = ?, bedrooms = ?, bathrooms = ?, cost = ?, lid = ?', [prop_id, property_name, property_type, location_name, property_description, bedrooms, bathrooms, cost, newLid], (err) => {
+                    connection.query('INSERT INTO property SET pid = ?, name = ?, type = ?, location = ?, description = ?, bedrooms = ?, bathrooms = ?, cost = ?, lid = ?, photo = ?', [prop_id, property_name, property_type, location_name, property_description, bedrooms, bathrooms, cost, newLid, req.file.filename], (err) => {
                         connection.release();
                         if (!err) {
                             res.redirect('/landlord');
@@ -134,4 +136,8 @@ exports.deleteProperty = (req, res) => {
             throw err;
         }
     }) 
+}
+
+exports.viewLandlordRequests = (req, res) => {
+    res.render('pages/landlord-requests');
 }

@@ -36,7 +36,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Requests</a>
+                        <a class="nav-link" href="/view-requests">Requests</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -61,7 +61,7 @@
                 <div class="d-flex flex-row justify-content-between">
                     <!-- property image -->
                     <div class="w-50 h-50">
-                        <img class="img-fluid" src="/images/house-1867187_640.jpg" alt="house" />
+                        <img class="img-fluid" src="<%= '/property-images/'+properties[i].photo %>" alt="house" />
                         <p class="pt-3 ps-2 text-wrap fs-7">
                             <%= properties[i].description %>
                         </p>
@@ -74,8 +74,7 @@
                             <a href="/edit-property/<%= properties[i].pid %>"
                                 class="btn btn-sm btn-light btn-outline-secondary"><i class="bi bi-pencil-square">
                                 </i>Edit</a>
-                            <a href=""
-                                class="btn btn-sm btn-light btn-outline-danger" data-bs-toggle="modal"
+                            <a href="" class="btn btn-sm btn-light btn-outline-danger" data-bs-toggle="modal"
                                 data-bs-target="<%= '#exampleModal-delete'+ i %>"><i class="bi bi-trash">
                                 </i>Delete</a>
                         </div>
@@ -102,29 +101,29 @@
                         </div>
                     </div>
                 </div>
-               
-                    <!-- Modal -->
-                    <div class="modal fade" id="<%= 'exampleModal-delete'+ i %>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Delete Property</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <p><small>Are you sure you want delete property permanently</small></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary btn-sm"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                    <a href="/delete-property/<%= properties[i].pid %>"
-                                        class="btn btn-sm btn-danger">Delete</a>
-                                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="<%= 'exampleModal-delete'+ i %>" tabindex="-1"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Delete Property</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p><small>Are you sure you want delete property permanently</small></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-sm"
+                                    data-bs-dismiss="modal">Cancel</button>
+                                <a href="/delete-property/<%= properties[i].pid %>"
+                                    class="btn btn-sm btn-danger">Delete</a>
                             </div>
                         </div>
                     </div>
+                </div>
             </section>
             <% } %>
 
@@ -140,7 +139,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form action="/landlord" method="post">
+                                <form action="/landlord" method="post" enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label for="property_name" class="col-form-label">Property Name:</label>
                                         <input type="text" class="form-control form-control-sm" id="property_name"
@@ -161,11 +160,10 @@
                                         <input type="text" class="form-control form-control-sm" id="location-name"
                                             name="location_name">
                                     </div>
-                                    <!-- <div class="mb-3">
-                                <label for="photos" class="col-form-label">Photos:</label>
-                                <input type="file" class="form-control form-control-sm" id="email-address"
-                                    value="Choose Photos" name="photos">
-                            </div> -->
+                                    <div class="mb-3">
+                                        <label for="photos" class="col-form-label">Photo:</label>
+                                        <input type="file" class="form-control form-control-sm" id="email-address" name="photo">
+                                    </div>
                                     <div class="mb-3">
                                         <label for="bedrooms" class="col-form-label">Number of Bedrooms:</label>
                                         <input type="number" class="form-control form-control-sm" id="bedrooms"

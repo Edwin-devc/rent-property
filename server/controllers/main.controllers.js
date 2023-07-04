@@ -16,18 +16,15 @@ exports.authenticateUser = (req, res) => {
                     throw err;
                 } else {
                     if(row.length != 0) {
-                        if(row[0].role === 'Admin') {
-                            req.session.email = req.body.email_login;
+                        const user = row[0];
+                        req.session.user = user;
+                        if(req.session.user.role === 'Admin') {
                             res.redirect('/admin');
-                        } else if (row[0].role === 'Client') {
-                            req.session.email = req.body.email_login;
-                            req.session.uid = row[0].uid;
+                        } else if (req.session.user.role === 'Client') {
                             res.redirect('/client'); 
-                        } else if (row[0].role === 'Landlord') {
-                            req.session.email = req.body.email_login;
-                            req.session.uid = row[0].uid; 
+                        } else if (req.session.user.role === 'Landlord') {
                             res.redirect('/landlord');
-                        } else if (row[0].role === 'Tenant') {
+                        } else if (req.session.user.role === 'Tenant') {
                             req.session.email = req.body.email_login;
                             res.redirect('/tenant');
                         }

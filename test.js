@@ -1,17 +1,44 @@
-const generateID = (firstCharacter) => {
-    let gid = firstCharacter;
-    const sampleSpace = [0,1,2,3,4,5,6,7,8,9];
-    for (let i = 0; i < 5; i++) {
-        gid += sampleSpace[Math.floor(Math.random()*sampleSpace.length)];
-    }
-    return gid;
-}
-const checkValue = 2;
-const checkValue2 = '2';
+const express = require('express');
+const sessionMiddleware = require('../session');
+const usersController = require('../controllers/usersController');
 
-const array = [0,1,2,3];
+const router = express.Router();
 
-console.log(array.length);
+router.use(sessionMiddleware);
 
+router.post('/login', usersController.authenticateUser);
+router.post('/logout', usersController.logoutUser);
 
+router.get('/client', (req, res) => {
+  if (req.session.user && req.session.user.role === 'client') {
+    res.send('Client page accessed successfully.');
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
 
+router.get('/tenant', (req, res) => {
+  if (req.session.user && req.session.user.role === 'tenant') {
+    res.send('Tenant page accessed successfully.');
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
+
+router.get('/admin', (req, res) => {
+  if (req.session.user && req.session.user.role === 'admin') {
+    res.send('Admin page accessed successfully.');
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
+
+router.get('/landlord', (req, res) => {
+  if (req.session.user && req.session.user.role === 'landlord') {
+    res.send('Landlord page accessed successfully.');
+  } else {
+    res.status(401).send('Unauthorized');
+  }
+});
+
+module.exports = router;

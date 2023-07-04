@@ -1,8 +1,8 @@
 const express = require('express');
 const ejs = require('ejs');
-const session = require('express-session');
 const bodyParser = require('body-parser');
 const pool = require('./connection.js');
+const session = require('express-session');
 
 const app = express();
 
@@ -13,12 +13,14 @@ app.use(express.static('public'));
 /* set the view to EJS engine */
 app.set('view engine', 'ejs');
 app.set('partials', 'views/partials');
+
 app.use(session({
     secret: 'my secret key',
     resave: false,
     saveUninitialized: false
 
 }))
+
 app.use(bodyParser.urlencoded({ extended: false}));
 
 const routes = require('./server/routes/property.routes.js');

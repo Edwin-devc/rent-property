@@ -14,7 +14,7 @@ exports.viewDashboard = (req, res) => {
         if (err) {
             throw err;
         } else {
-            if (req.session.email) {
+            if (req.session.user.email) {
                 const data = {};
                 connection.query('SELECT * FROM client', (err, clients) => {
                     if (err) {

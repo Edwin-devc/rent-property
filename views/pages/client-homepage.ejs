@@ -48,39 +48,56 @@
     </nav>
 
     <main>
-        <% for (let i = 0; i < properties.length; i++) { %> 
-        <section class="card w-75 m-auto bg-light my-4">
-            <div class="d-flex justify-content-between">
-                <!-- property image -->
-                <div class="w-50 h-50">
-                    <img class="img-fluid" src="/images/house-1867187_640.jpg" alt="house" />
-                    <p class="pt-3 ps-2 text-wrap fs-7">
-                        <%= properties[i].description %>
-                    </p>
-                </div>
-                <!-- property information -->
-                <div class="mx-auto mt-2">
-                    <div class="button-group">
-                        <a href="/addcomment/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-primary"><i class="bi bi-chat-right-text"> </i>Comment</a>
-                        <a href="/likeproperty/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-secondary"><i class="bi bi-hand-thumbs-up"> </i>Like</a>
-                        <a href="/dislikeproperty/<%= properties[i].pid %>" class="btn btn-sm btn-light btn-outline-danger"><i class="bi bi-hand-thumbs-down"> </i>Dislike</a>
+        <% for (let i=0; i < properties.length; i++) { %>
+
+            <section class="card w-75 m-auto bg-light my-4">
+                <div class="d-flex justify-content-between">
+                    <!-- property image -->
+                    <div class="w-50 h-50">
+                        <img class="img-fluid" src="<%= '/property-images/'+properties[i].photo %>" alt="house" />
+                        <p class="pt-3 ps-2 text-wrap fs-7">
+                            <%= properties[i].description %>
+                        </p>
                     </div>
-                    <!-- details -->
-                    <div class="pt-3">
-                        <h4><%= properties[i].name %></h4>
-                        <ul class="list-group mb-2">
-                            <li class="list-group-item">Type: <%= properties[i].type %></li>
-                            <li class="list-group-item">Location: <%= properties[i].location %></li>
-                            <li class="list-group-item">Bedrooms: <%= properties[i].bedrooms %></li>
-                            <li class="list-group-item">Bathrooms: <%= properties[i].bathrooms %></li>
-                            <li class="list-group-item">Cost: UGX.<%= properties[i].cost %></li>
-                        </ul>
-                        <a href="/requestlease/<%= properties[i].pid %>" class="btn btn-sm btn-success"><i class="bi bi"> </i>Release lease</a>
+                    <!-- property information -->
+                    <div class="mx-auto mt-2">
+                        <div class="button-group">
+                            <a href="/addcomment/<%= properties[i].pid %>"
+                                class="btn btn-sm btn-light btn-outline-primary"><i class="bi bi-chat-right-text">
+                                </i>Comment</a>
+                            <a href="/likeproperty/<%= properties[i].pid %>"
+                                class="btn btn-sm btn-light btn-outline-secondary"><i class="bi bi-hand-thumbs-up">
+                                </i>Like</a>
+                            <a href="/dislikeproperty/<%= properties[i].pid %>"
+                                class="btn btn-sm btn-light btn-outline-danger"><i class="bi bi-hand-thumbs-down">
+                                </i>Dislike</a>
+                        </div>
+                        <!-- details -->
+                        <div class="pt-3 mb-2">
+                            <h4>
+                                <%= properties[i].name %>
+                            </h4>
+                            <ul class="list-group mb-2">
+                                <li class="list-group-item">Type: <%= properties[i].type %>
+                                </li>
+                                <li class="list-group-item">Location: <%= properties[i].location %>
+                                </li>
+                                <li class="list-group-item">Bedrooms: <%= properties[i].bedrooms %>
+                                </li>
+                                <li class="list-group-item">Bathrooms: <%= properties[i].bathrooms %>
+                                </li>
+                                <li class="list-group-item">Cost: UGX.<%= properties[i].cost %>
+                                </li>
+                                <li class="list-group-item">Contact: <%= landlords[i].contact %>
+                                </li>
+                            </ul>
+                            <a href="/requestlease/<%= properties[i].pid %>" class="btn btn-sm btn-success"><i
+                                class="bi bi"> </i>Release lease</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <% } %>
+            </section>
+            <% } %>
 
     </main>
     <!-- bootstrap js vendor -->
